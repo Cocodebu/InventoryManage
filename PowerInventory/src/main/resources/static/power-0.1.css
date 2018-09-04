@@ -1,0 +1,85 @@
+.block {
+    display: block;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.m-b {
+    margin-bottom: 15px;
+}
+
+
+.btn-white {
+    color: inherit;
+    background: white;
+    border: 1px solid #e7eaec;
+}
+.btn-white:hover,
+.btn-white:focus,
+.btn-white:active,
+.btn-white.active,
+.open .dropdown-toggle.btn-white,
+.btn-white:active:focus,
+.btn-white:active:hover,
+.btn-white.active:hover,
+.btn-white.active:focus {
+    color: inherit;
+    border: 1px solid #d2d2d2;
+}
+.btn-white:active,
+.btn-white.active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+}
+.btn-white:active,
+.btn-white.active,
+.open .dropdown-toggle.btn-white {
+    background-image: none;
+}
+.btn-white.disabled,
+.btn-white.disabled:hover,
+.btn-white.disabled:focus,
+.btn-white.disabled:active,
+.btn-white.disabled.active,
+.btn-white[disabled],
+.btn-white[disabled]:hover,
+.btn-white[disabled]:focus,
+.btn-white[disabled]:active,
+.btn-white.active[disabled],
+fieldset[disabled] .btn-white,
+fieldset[disabled] .btn-white:hover,
+fieldset[disabled] .btn-white:focus,
+fieldset[disabled] .btn-white:active,
+fieldset[disabled] .btn-white.active {
+    color: #cacaca;
+}
+
+/* ERROR & LOGIN & LOCKSCREEN*/
+.middle-box {
+    max-width: 400px;
+    z-index: 100;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.lockscreen.middle-box {
+    width: 200px;
+    padding-top: 110px;
+}
+.loginscreen.middle-box {
+    width: 300px;
+}
+
+
+.logo-name {
+    color: #e6e6e6;
+    font-size: 120px;
+    font-weight: 800;
+    letter-spacing: -10px;
+    margin-bottom: 0px;
+}
+
+.text-backcolor {
+    color: #e6e6e6;
+}
+

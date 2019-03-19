@@ -12,7 +12,7 @@
     <title>Power进销存-0.1</title>
 
     <!-- Bootstrap Core CSS -->
-    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.css}" rel="stylesheet"/>
     <!-- MetisMenu CSS -->
     <link th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
 
@@ -50,7 +50,7 @@
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
+            <ul class="nav navbar-top-links navbar-right navbar-nav">
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -66,7 +66,7 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
+            <div class="navbar-inverse sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
@@ -79,7 +79,10 @@
                                     <a href="#">员工管理</a>
                                 </li>
                                 <li>
-                                    <a href="#">供应商管理</a>
+                                    <a href="/supplierManager">供应商管理</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost:8081/linkmanManager">联系人管理</a>
                                 </li>
                                 <li>
                                     <a href="#">商品管理</a>

@@ -75,10 +75,19 @@ body {
   padding: 15px;
 }
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid #033649;
+}
+.sidebar ul li a{                        /*侧面导航栏的一些颜色改变*/
+  color:#ccc;                            /*正常时候里面的字体颜色为灰*/
+}
+.sidebar ul li a:hover,
+.sidebar ul li a:focus{
+  color:#FFFFFF;                         /*当鼠标悬停与获取焦点时变为字体变为白色并且背景颜色变深*/
+  background-color: #20242e;
 }
 .sidebar ul li a.active {
-  background-color: #eeeeee;
+  color:#FFFFFF;
+  background-color: #20242e;
 }
 .sidebar .arrow {
   float: right;
@@ -105,6 +114,7 @@ body {
     position: absolute;
     width: 250px;
     margin-top: 51px;
+    height: 821.2px;
   }
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
@@ -137,7 +147,7 @@ body {
 .btn-info.btn-outline:hover,
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
-  color: white;
+  color: #23a8f8;
 }
 .chat {
   margin: 0;

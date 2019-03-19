@@ -21,5 +21,12 @@ public class LoginController {
         return "redirect:/main";
     }
 
+    @RequestMapping(value={"/manager"})
+    public String Log(Model model) { return "manager";
+    }
+//    @RequestMapping(value={"/addSupplier"})
+//    public String Add(Model model) {
+//        return "addSupplier";
+//    }
 
 }

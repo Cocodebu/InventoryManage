@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>帮帮办事通</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- MetisMenu CSS -->
+    <link th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
+    <link th:href="@{Chen.css}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link th:href="@{/dist/css/sb-admin-2.css}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link th:href="@{/vendor/morrisjs/morris.css}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <a class="navbar-brand" href="main">帮帮办事通</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>基础数据管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/base_data/user">推荐</a>
+                            </li>
+                            <li>
+                                <a href="#">热榜</a>
+                            </li>
+                            <li>
+                                <a href="#">知名答主</a>
+                            </li>
+                            <li>
+                                <a href="#">关注</a>
+                            </li>
+                            <li>
+                                <a href="#">视频</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>问题管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">采购管理</a>
+                            </li>
+                            <li>
+                                <a href="#">采购退货管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>疑难解答<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">销售管理</a>
+                            </li>
+                            <li>
+                                <a href="#">销售退货管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>事务分析<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">费用清单管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li>-->
+                        <!--<a href="#"><i class="fa fa-database fa-fw"></i>库存管理<span class="fa arrow"></span></a>-->
+                        <!--<ul class="nav nav-second-level">-->
+                            <!--<li>-->
+                                <!--<a href="#">商品库存余额表</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>统计分析<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">利润表</a>
+                            </li>
+                            <li>
+                                <a href="#">费用表</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">问题查询</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div >
+            <form class="form-horizontal" name="queryForm" action="/linkmanManager" method="post"  role="form">
+
+                <div class="form-group">
+
+                    <label class="col-sm-1 control-label">问题</label>
+
+                    <div class="col-sm-2">
+
+                        <input type="text" class="form-control"  name="supplierId" placeholder="问题">
+
+                    </div>
+
+                    <label class="col-sm-1 control-label">答主</label>
+
+                    <div class="col-sm-2">
+
+                        <input type="text" class="form-control"  placeholder="答主">
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-info"   > <span class="glyphicon glyphicon-search" aria-hidden="true"> 查询 </span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="reset" class="btn btn-info" > <span class="glyphicon glyphicon-refresh" aria-hidden="true"> 重置 </span></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" name="ck"></th>
+                        <th>编号</th>
+                        <th>问题</th>
+                        <th>首要解答人</th>
+                        <th>手机号</th>
+                        <th>qq微信/Email</th>
+                        <th>地址</th>
+                        <th>备注</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="ck"></td>
+                        <td>1</td>
+                        <td >如何挑选台球球杆</td>
+                        <!--问号的作用是判断是否为空，为空的话就不会执行会面的语句就不会报错-->
+                        <td>张鹏</td>
+                        <td>18638745457</td>
+                        <td>715524865@qq.com</td>
+                        <td>北京市朝阳区</td>
+                        <td>具体的挑选方法 品牌介绍等等</td>
+                        <td>
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                                       id="1"     >
+                                <label class="onoffswitch-label" for="1">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ck"></td>
+                        <td>2</td>
+                        <td >大学生活应该怎么用才好</td>
+                        <!--问号的作用是判断是否为空，为空的话就不会执行会面的语句就不会报错-->
+                        <td>王昊</td>
+                        <td>15556413228</td>
+                        <td>821516841@qq.com</td>
+                        <td>沈阳市大东区</td>
+                        <td>我是一名大三学生我现在迷茫希望帮助</td>
+                        <td>
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                                       id="2"     >
+                                <label class="onoffswitch-label" for="2">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script th:src="@{/vendor/metisMenu/metisMenu.min.js}"></script>
+
+<!-- Morris Charts JavaScript -->
+<script th:src="@{/vendor/raphael/raphael.min.js}"></script>
+<script th:src="@{/vendor/morrisjs/morris.min.js}"></script>
+<!--<script src="../data/morris-data.js"></script>-->
+
+<!-- Custom Theme JavaScript -->
+<script th:src="@{/dist/js/sb-admin-2.js}"></script>
+
+</body>
+
+</html>

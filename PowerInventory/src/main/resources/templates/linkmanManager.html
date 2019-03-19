@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Power进销存-0.1</title>
+
+    <link th:href="@{/Chen.css}" rel="stylesheet"/>
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.css}" rel="stylesheet"/>
+    <!-- MetisMenu CSS -->
+    <link th:href="@{/vendor/metisMenu/metisMenu.min.css}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link th:href="@{/dist/css/sb-admin-2.css}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link th:href="@{/vendor/morrisjs/morris.css}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+
+    <link th:href="@{/power-0.1.css}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>-->
+    <![endif]-->
+
+    <!--拦截submit提交，解决空值问题-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <a class="navbar-brand" href="main">Power 进销存 0.1</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right navbar-nav">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-inverse sidebar " role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>基础数据管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/base_data/user">用户管理</a>
+                            </li>
+                            <li>
+                                <a href="#">员工管理</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8081/supplierManager">供应商管理</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8081/linkmanManager">联系人管理</a>
+                            </li>
+                            <li>
+                                <a href="#">商品管理</a>
+                            </li>
+                            <li>
+                                <a href="#">仓库管理</a>
+                            </li>
+                            <li>
+                                <a href="#">客户管理</a>
+                            </li>
+                            <li>
+                                <a href="#">费用类别管理</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>采购管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">采购管理</a>
+                            </li>
+                            <li>
+                                <a href="#">采购退货管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>销售管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">销售管理</a>
+                            </li>
+                            <li>
+                                <a href="#">销售退货管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>费用管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">费用清单管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>库存管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">商品库存余额表</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i>统计分析<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">利润表</a>
+                            </li>
+                            <li>
+                                <a href="#">费用表</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+
+
+        </div>
+        <!-- /.navbar-static-side -->
+
+
+    </nav>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">联系人管理</h1>
+            </div>
+        </div>
+        <!--表单#按供应商编号名字查询联系人-->
+        <div class="text-center">
+        <form class="form-horizontal" name="queryForm" action="/linkmanManager" method="post"  role="form">
+
+            <div class="form-group">
+
+                <label class="col-sm-1 control-label">编号</label>
+
+                <div class="col-sm-2">
+
+                    <input type="text" class="form-control"  name="supplierId" placeholder="所属供应商编号">
+
+                </div>
+
+                <label class="col-sm-1 control-label">名称</label>
+
+                <div class="col-sm-2">
+
+                    <input type="text" class="form-control"  placeholder="所属供应商名称">
+
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-info"  data-toggle="tooltip"  title="按供应商信息查询"  > <span class="glyphicon glyphicon-search" aria-hidden="true"> 查询 </span></button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="reset" class="btn btn-info" > <span class="glyphicon glyphicon-refresh" aria-hidden="true"> 重置 </span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+            <!--表格-->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>联系人</th>
+                        <th>电话</th>
+                        <th>email</th>
+                        <th>地址</th>
+                        <th>首要联系人</th>
+                        <th>所属供应商</th>
+                        <th>编辑</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="linkman:${linkmans}">
+                        <td th:text="${linkman.getId()}"></td>
+                        <td th:text="${linkman.getName()}"></td>
+                        <td th:text="${linkman.getTel()}"></td>
+                        <td th:text="${linkman.getEmail()}"></td>
+                        <td th:text="${linkman.getAddress()}"></td>
+                        <td th:text="${linkman.getMainLinkman()}"></td>
+                        <td th:text="${linkman.getSysSupplierId()}"></td>
+                        <td>
+                            <!--添加联系人-->
+                            <a  data-toggle="modal" data-target="#addModal" style="color: rgb(121, 66, 136);">
+                                <span class="glyphicon glyphicon-plus aria-hidden="true""></span></a>
+
+                            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!--模态框头部-->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">新增联系人</h4>
+                                            <div class="alert alert-warning " hidden id="alertDialog">
+                                                <a href="#" class="close" onclick="hideAlert()">&times;</a>
+                                                <div><strong id="alertTitle">警告！</strong><Span id="alertMsg">++这里显示消息++</Span></div>
+                                            </div>
+                                        </div>
+                                        <!--表单提交模态框内部底部-->
+                                        <form id="addForm" class="form-horizontal" role="form">
+                                            <div class="modal-body">
+                                                <!--&lt;!&ndash;联系人的编号&ndash;&gt;-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<label class="col-sm-4 control-label">编号</label>-->
+                                                    <!--<div class="col-sm-5">-->
+                                                        <!--<input type="text" class="form-control"  name="linkmanId" >-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--联系人的姓名-->
+                                                <div class="form-group">
+                                                    <label for="linkmanName" class="col-sm-4 control-label">姓名</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control"  id="linkmanName"  placeholder="姓名">
+                                                    </div>
+                                                </div>
+                                                <!--联系人的电话-->
+                                                <div class="form-group">
+                                                    <label for="linkmanTel" class="col-sm-4 control-label">电话</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control"  id="linkmanTel"  placeholder="电话">
+                                                    </div>
+                                                </div>
+                                                <!--联系人的邮箱-->
+                                                <div class="form-group">
+                                                    <label for="linkmanEmail" class="col-sm-4 control-label">邮箱</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control"  id="linkmanEmail"  placeholder="邮箱">
+                                                    </div>
+                                                </div>
+                                                <!--联系人的地址-->
+                                                <div class="form-group">
+                                                    <label for="linkmanAddress" class="col-sm-4 control-label">地址</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control"  id="linkmanAddress"  placeholder="地址">
+                                                    </div>
+                                                </div>
+                                                <!--是否是首要联系人-->
+                                                <div class="form-group">
+                                                    <label for="mainLinkman" class="col-sm-4 control-label">首要联系人</label>
+                                                    <div class="col-sm-5">
+                                                        <select class="form-control"  id="mainLinkman">
+                                                            <option></option>
+                                                            <option value="true">是</option>
+                                                            <option value="false">否</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--供应商的编号-->
+                                                <div class="form-group">
+                                                    <label for="supplierId" class="col-sm-4 control-label">所属供应商编号</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control"  id="supplierId"  placeholder="所属供应商编号">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--模态框底部-->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <button type="button" class="btn btn-primary" onclick="check()" >保存</button>
+                                            </div>
+                                        </form>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+
+                            <!--删除联系人-->
+                            <a  data-toggle="modal" data-target="#delModal" style="color: rgb(121, 66, 136);">
+                                <span class="glyphicon glyphicon-trash aria-hidden="true""></span></a>
+
+                            <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!--模态框头部-->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">删除联系人</h4>
+                                        </div>
+                                        <!--表单提交模态框内部底部-->
+                                        <form action="/deleteLinkman" method="post" class="form-horizontal" role="form">
+                                            <div class="modal-body">
+                                                <!--&lt;!&ndash;联系人的编号&ndash;&gt;-->
+                                                <!--<div class="form-group">-->
+                                                    <!--<label class="col-sm-4 control-label">编号</label>-->
+                                                    <!--<div class="col-sm-5">-->
+                                                        <!--<input type="text" class="form-control"  name="linkmanId" >-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--联系人的姓名-->
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">姓名</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control"  name="linkmanName" placeholder="姓名">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--模态框底部-->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <button type="submit" class="btn btn-primary">保存</button>
+                                            </div>
+                                        </form>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+
+<script th:src="@{linkmanManager.js}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script th:src="@{/vendor/metisMenu/metisMenu.min.js}"></script>
+
+<!-- Morris Charts JavaScript -->
+<script th:src="@{/vendor/raphael/raphael.min.js}"></script>
+<script th:src="@{/vendor/morrisjs/morris.min.js}"></script>
+<!--<script src="../data/morris-data.js"></script>-->
+
+<!-- Custom Theme JavaScript -->
+<script th:src="@{/dist/js/sb-admin-2.js}"></script>
+<!--<script>-->
+<!--function check()-->
+<!--{-->
+<!--var id=document.getElementsByName("supplierId")[0].value;-->
+<!--if(id=="")-->
+<!--{-->
+<!--alert("编号不能为空！");-->
+<!--return false;-->
+<!--}-->
+<!--}-->
+<!--</script>-->
+<script>
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+
+</body>
+
+</html>

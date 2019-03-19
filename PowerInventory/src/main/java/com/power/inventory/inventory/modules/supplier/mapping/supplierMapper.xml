@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.power.inventory.inventory.modules.supplier.dao.supplierMapper">
+  <resultMap id="BaseResultMap" type="com.power.inventory.inventory.modules.supplier.model.supplier">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="on_off" jdbcType="BIT" property="onOff" />
+  </resultMap>
+
+  <resultMap id="QueryResultMap" type="com.power.inventory.inventory.modules.supplier.model.supplier">
+  <id column="id" jdbcType="BIGINT" property="id" />
+  <result column="name" jdbcType="VARCHAR" property="name" />
+  <result column="remark" jdbcType="VARCHAR" property="remark" />
+  <result column="on_off" jdbcType="BIT" property="onOff" />
+  <collection property="linkman" ofType="com.power.inventory.inventory.modules.Linkman.model.Linkman">
+    <id column="l_id" jdbcType="BIGINT" property="id" />
+    <result column="l_name" jdbcType="VARCHAR" property="name" />
+    <result column="tel" jdbcType="BIGINT" property="tel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="main_linkman" jdbcType="BIT" property="mainLinkman" />
+    <result column="sys_supplier_id" jdbcType="BIGINT" property="sysSupplierId" />
+  </collection>
+</resultMap>
+  <sql id="Base_Column_List">
+    id, name, remark, on_off
+  </sql>
+  <select id="selectAllSupplier"  resultMap="QueryResultMap">
+select SYS_SUPPLIER.*,SYS_LINKMAN.id as l_id,SYS_LINKMAN.name as l_name,SYS_LINKMAN.tel,SYS_LINKMAN.email,SYS_LINKMAN.address
+from SYS_SUPPLIER left join SYS_LINKMAN
+on SYS_SUPPLIER.id=SYS_LINKMAN.sys_supplier_id
+and SYS_LINKMAN.main_linkman=#{mainLinkman,jdbcType=BIT};
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_SUPPLIER
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SYS_SUPPLIER
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.power.inventory.inventory.modules.supplier.model.supplier">
+    insert into SYS_SUPPLIER (id, name, remark, 
+      on_off)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{onOff,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.power.inventory.inventory.modules.supplier.model.supplier">
+    insert into SYS_SUPPLIER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="onOff != null">
+        on_off,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="onOff != null">
+        #{onOff,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.power.inventory.inventory.modules.supplier.model.supplier">
+    update SYS_SUPPLIER
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="onOff != null">
+        on_off = #{onOff,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.power.inventory.inventory.modules.supplier.model.supplier">
+    update SYS_SUPPLIER
+    set name = #{name,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      on_off = #{onOff,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

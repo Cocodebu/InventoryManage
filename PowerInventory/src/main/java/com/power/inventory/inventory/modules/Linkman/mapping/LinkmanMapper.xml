@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.power.inventory.inventory.modules.Linkman.dao.LinkmanMapper">
+  <resultMap id="BaseResultMap" type="com.power.inventory.inventory.modules.Linkman.model.Linkman">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="tel" jdbcType="BIGINT" property="tel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="main_linkman" jdbcType="BIT" property="mainLinkman" />
+    <result column="sys_supplier_id" jdbcType="BIGINT" property="sysSupplierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, tel, email, address, main_linkman, sys_supplier_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_LINKMAN
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!--查找所有-->
+  <select id="selectAllLinkman" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SYS_LINKMAN
+  </select>
+  <!--通过外键查找-->
+  <select id="selectByForeignKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SYS_LINKMAN
+    where sys_supplier_id = #{sys_supplier_id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SYS_LINKMAN
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByName" parameterType="java.lang.String">
+    delete from SYS_LINKMAN
+    where name = #{name,jdbcType=VARCHAR}
+  </delete>
+  <select id="selectLinkmanByName" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from SYS_LINKMAN
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.power.inventory.inventory.modules.Linkman.model.Linkman">
+    insert into SYS_LINKMAN ( name, tel,
+      email, address, main_linkman, 
+      sys_supplier_id)
+    values ( #{name,jdbcType=VARCHAR}, #{tel,jdbcType=BIGINT},
+      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{mainLinkman,jdbcType=BIT}, 
+      #{sysSupplierId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.power.inventory.inventory.modules.Linkman.model.Linkman">
+    insert into SYS_LINKMAN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="mainLinkman != null">
+        main_linkman,
+      </if>
+      <if test="sysSupplierId != null">
+        sys_supplier_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=BIGINT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mainLinkman != null">
+        #{mainLinkman,jdbcType=BIT},
+      </if>
+      <if test="sysSupplierId != null">
+        #{sysSupplierId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.power.inventory.inventory.modules.Linkman.model.Linkman">
+    update SYS_LINKMAN
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=BIGINT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mainLinkman != null">
+        main_linkman = #{mainLinkman,jdbcType=BIT},
+      </if>
+      <if test="sysSupplierId != null">
+        sys_supplier_id = #{sysSupplierId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.power.inventory.inventory.modules.Linkman.model.Linkman">
+    update SYS_LINKMAN
+    set name = #{name,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=BIGINT},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      main_linkman = #{mainLinkman,jdbcType=BIT},
+      sys_supplier_id = #{sysSupplierId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
